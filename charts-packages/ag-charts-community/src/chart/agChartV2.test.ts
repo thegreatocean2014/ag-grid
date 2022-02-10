@@ -206,7 +206,11 @@ describe('AgChartV2', () => {
                     const imageDataUrl = canvas.getDataURL('image/png');
                     const imageData = Buffer.from(imageDataUrl.split(',')[1], 'base64');
     
-                    (expect(imageData) as any).toMatchImageSnapshot({failureThreshold: 10, failureThresholdType: "percent"});
+                    const opts = {
+                        failureThreshold: 10,
+                        failureThresholdType: "percent",
+                    };
+                    (expect(imageData) as any).toMatchImageSnapshot(opts);
                 };
 
                 const options: AgChartOptions = { ...example.options };
